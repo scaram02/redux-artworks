@@ -19,7 +19,7 @@ const AllArtworks = () => {
 
  useEffect(() => {
  getAllArtworks()
- })
+ }, [])
 
 
  const getAllArtworks = () => {

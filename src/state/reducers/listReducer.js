@@ -1,11 +1,15 @@
 // the list of the arts, add or delete
-const reducer = (state = [], action) => {
+
+const reducer = (state = {artworks: []}, action) => { 
     switch(action.type){
         case "add":
-            return [action.payload, ...state];
+            return {artworks: [...state.artworks, action.payload]};
         case "remove":
-            return state.filter((art) => art.id !== action.payload);
+            return {artworks: state.artworks.filter((art) => art.id !== action.payload)};
         default: 
         return state
     }
 }
+
+
+export default reducer;

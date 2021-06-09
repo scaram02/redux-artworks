@@ -1,6 +1,6 @@
 // put the functions in here
 
-const addToFaves = id => {
+export const addToFaves = id => {
     return (dispatch) => {
         dispatch({
             type: "add",
@@ -9,7 +9,7 @@ const addToFaves = id => {
     }
 }
 
-const removeFromFaves = id => {
+export const removeFromFaves = id => {
     return (dispatch) => {
         dispatch({
             type: 'remove', 
