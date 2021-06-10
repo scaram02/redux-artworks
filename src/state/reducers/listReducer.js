@@ -5,7 +5,7 @@ const reducer = (state = {artworks: []}, action) => {
         case "add":
             return {artworks: [...state.artworks, action.payload]};
         case "remove":
-            return {artworks: state.artworks.filter((art) => art.id !== action.payload)};
+            return {artworks: state.artworks.filter((art) => art !== action.payload)};
         default: 
         return state
     }

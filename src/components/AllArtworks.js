@@ -8,18 +8,18 @@ const AllArtworks = () => {
 
  const [allArtworks, setAllArtworks] = useState([])
  const dispatch = useDispatch()
- const {addToFaves} = bindActionCreators(actionCreators, dispatch)
+ const {addToFaves, removeFromFaves} = bindActionCreators(actionCreators, dispatch)
 
 
 
- const state = useSelector((state) => state)
- console.log(state)
+ const artworks = useSelector((state) => state.artworks)
+//  console.log(artworks)
 
 
 
  useEffect(() => {
  getAllArtworks()
- }, [])
+ })
 
 
  const getAllArtworks = () => {
@@ -33,10 +33,14 @@ const AllArtworks = () => {
        console.log('YO', data)
        const arts = data.data.map((a) => {
         //    return <li>{a.title}</li>
+        const url = `https://www.artic.edu/iiif/2/${a.image_id}/full/843,/0/default.jpg`
     return (
     <div key={a.id}>
-    <button onClick={addToFaves}>add to faves</button>
-    <li>{a.title} by {a.artist_title}</li>
+    <button onClick={() => addToFaves(a.id)}>add to faves</button>
+    <button onClick={() => removeFromFaves(a.id)}>no thanks</button>
+    <h2>{a.title} by {a.artist_title}</h2>
+    
+    <img src={url}/>
     </div>
     )
 })
@@ -50,7 +54,9 @@ setAllArtworks(arts)
 
     return (
         <div>
-            <ul>{allArtworks}</ul>
+            {artworks.artworks.map((a) => <h1>{a}</h1>)}
+            <ul>{allArtworks}
+            </ul>
         </div>
     )
 }
